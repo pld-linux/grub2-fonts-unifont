@@ -6,7 +6,7 @@
 %define _fontname unifont
 %define _destdir  /grub2/fonts
 Summary:	Unifont font for grub2 gfxterm mode
-Summary(pl.UTF-8):	Czcinka unifont do trybu graficznego bootloadera grub2
+Summary(pl.UTF-8):	Czcionka unifont do trybu graficznego bootloadera grub2
 Name:		grub2-fonts-%{_fontname}
 Version:	5.1
 Release:	1
@@ -15,7 +15,6 @@ Group:		Fonts
 Source0:	http://unifoundry.com/%{_fontname}-%{version}.%{_snap}.ttf.gz
 # Source0-md5:	708a693e340902779ec9ad13acae279a	
 Source1:	simple_convert
-# Source1-md5:	16c93d8d30db1fab7c2f204eec29d25c
 URL:		http://unifoundry.com/unifont.html
 BuildRequires:	grub2
 BuildRequires:	freetype1-tools-ttf2bdf
@@ -26,20 +25,20 @@ BuildArch:	noarch
 Unifont font for grub2 gfxterm mode.
 
 %description -l pl.UTF-8
-Czcinka unifont do trybu graficznego bootloadera grub2.
+Czcionka unifont do trybu graficznego bootloadera grub2.
 
 %prep
 %setup -cT %{name}-%{version}
-cp %{SOURCE0} ./
-cp %{SOURCE1} ./
+install %{SOURCE0} .
+install %{SOURCE1} .
 gzip -d %{_fontname}-%{version}.%{_snap}.ttf.gz
 mv %{_fontname}-%{version}.%{_snap}.ttf %{_fontname}.ttf
 
 %build
 for i in %{_sizes}; do
-# /usr/bin/ttf2bdf -v -r 75 -p $i -o %{_fontname}$i.bdf -t %{_fontname} %{_fontname}.ttf
-#/sbin/grub-mkfont --output=%{_fontname}$i.pf2 %{_fontname}$i.bdf
-sh simple_convert $i %{_fontname}
+	# /usr/bin/ttf2bdf -v -r 75 -p $i -o %{_fontname}$i.bdf -t %{_fontname} %{_fontname}.ttf
+	#/sbin/grub-mkfont --output=%{_fontname}$i.pf2 %{_fontname}$i.bdf
+	sh simple_convert $i %{_fontname}
 done
 
 %install
@@ -53,7 +52,7 @@ cp *.pf2* $RPM_BUILD_ROOT%{_datadir}%{_destdir}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-echo "Heare you are (%{_sizes})pt/75dpi fonts.
+echo "These are (%{_sizes})pt/75dpi fonts.
 Copy one somewhere under /boot location and set in grub.cfg.
 To get other sizes rebuild package setting desired _sizes."
 
