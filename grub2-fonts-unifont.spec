@@ -17,7 +17,7 @@ Source0:	http://unifoundry.com/%{_fontname}-%{version}.%{_snap}.ttf.gz
 Source1:	simple_convert
 URL:		http://unifoundry.com/unifont.html
 BuildRequires:	grub2
-BuildRequires:	freetype1-tools-ttf2bdf
+BuildRequires:	/usr/bin/ttf2bdf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
 
