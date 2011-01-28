@@ -13,13 +13,13 @@ Release:	1
 License:	GNU GPL v.2
 Group:		Fonts
 Source0:	http://unifoundry.com/%{_fontname}-%{version}.%{_snap}.ttf.gz
-# Source0-md5:	708a693e340902779ec9ad13acae279a	
+# Source0-md5:	708a693e340902779ec9ad13acae279a
 Source1:	simple_convert
 URL:		http://unifoundry.com/unifont.html
-BuildRequires:	grub2
 BuildRequires:	/usr/bin/ttf2bdf
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	grub2
 BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Unifont font for grub2 gfxterm mode.
@@ -28,7 +28,7 @@ Unifont font for grub2 gfxterm mode.
 Czcionka unifont do trybu graficznego bootloadera grub2.
 
 %prep
-%setup -cT %{name}-%{version}
+%setup -q -cT %{name}-%{version}
 install %{SOURCE0} .
 install %{SOURCE1} .
 gzip -d %{_fontname}-%{version}.%{_snap}.ttf.gz
