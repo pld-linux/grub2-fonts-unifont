@@ -1,3 +1,0 @@
-#!/bin/sh
-/usr/bin/ttf2bdf -v -r 75 -p "$1" -o "$2$1".bdf -t "$2" "$2".ttf
-/sbin/grub-mkfont --output="$2$1".pf2 "$2$1".bdf
